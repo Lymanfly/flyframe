@@ -1,0 +1,98 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    session:
+      timeout: 1800
+
+spring:
+  main:
+    log-startup-info: false
+  http:
+    converters:
+      preferred-json-mapper: gson
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+  jpa:
+    open-in-view: false
+  massages:
+    basename: i18n/messages
+    cache-seconds: 3600
+    encoding: UTF-8
+  jackson:
+    time-zone: GMT+8
+    data-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      indent_output: true
+      fail_on_empty_beans: false
+    defaultPropertyInclusion: ALWAYS
+    deserialization:
+      fail_on_unknown_properties: false
+    parser:
+      allow_unquoted_control_chars: true
+      allow_single_quotes: true
+      allow_non_numeric_numbers: true
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/lymandb
+    username: lyman
+    password: dbLy0930
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      pool-name: lymanpg-pool
+      minimum-idle: 3
+      maximum-pool-size: 10
+      auto-commit: true
+      idle-timeout: 180000
+      max-lifetime: 1800000
+      connection-test-query: SELECT 1
+      connection-timeout: 3000
+      keepalive-Time: 360000
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: lymanmongo
+      username: lyman
+      password: mongoLy0930
+
+thread-pool:
+  scheduler:
+    pool-size: 10
+  excutor:
+    core-pool-size: 100
+    max-pool-size: 500
+    queue-capacity: 2000
+    keep-alive-seconds: 60
+    thread-name-prefix: ly-excutor
+  cache:
+    core-pool-size: 100
+    max-pool-size: 500
+    queue-capacity: 2000
+    keep-alive-seconds: 60
+    thread-name-prefix: ly-cache
+rest:
+  request-factory:
+    connection-timeout: 2000
+    read-timeout: 30000
+    connection-request-timeout: 4000
+  connection-manager:
+    max-total: 100
+    default-max-per-route: 500
+    validate-after-inactivity: 5000
+hibernate:
+  lyman:
+    hibernate-properties: "{\"hibernate.dialect\":\"org.lyman.enhance.hibernate.PostgresSQLExtendDialect\",
+                            \"hibernate.show_sql\":false,
+                            \"hibernate.cache.region.factory_class\":\"org.hibernate.cache.ehcache.EhCacheRegionFactory\",
+                            \"hibernate.format_sql\":false,
+                            \"hibernate.use_sql_comments\":false,
+                            \"hibernate.jdbc.fetch_size\":200,
+                            \"hibernate.jdbc.batch_size\":200,
+                            \"hibernate.jdbc.use_streams_for_binary\":false,
+                            \"hibernate.cache.use_second_level_cache\":false,
+                            \"hibernate.cache.use_query_cache\":false,
+                            \"hibernate.max_fetch_depth\":3,
+                            \"hibernate.temp.use_jdbc_metadata_defaults\":false}"
+    packages-to-scan: "org.lyman.*"

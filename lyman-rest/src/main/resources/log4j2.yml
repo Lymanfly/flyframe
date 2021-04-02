@@ -1,0 +1,50 @@
+configuration:
+  status: error
+  properties: #定义变量
+    property:
+      - name: log.level.console
+        value: info
+      - name: log.level.file
+        value: info
+      - name: log.path
+        value: /Users/lyman/workspace/logs
+      - name: project.name
+        value: lyman-fly
+  appenders:  #定义日志输出
+    console:
+      name: STDOUT
+      target: SYSTEM_OUT
+      follow: true
+      patternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss} [%p] [%c] [%F:%L] - %m%n"
+    rollingRandomAccessFile:
+      name: ROLLING_FILE
+      ignoreExceptions: false
+      bufferedIo: true
+      fileName: "${log.path}/${project.name}.log"
+      filePattern: "${log.path}/${project.name}-%d{yyyy-MM-dd}.log"
+      append: true
+      patternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss} [%p] [%c] - %m%n"
+      filters:
+        thresholdFilter:
+            level: ${sys:log.level.file}
+            onMatch: ACCEPT
+            onMismatch: DENY
+      policies:
+        timeBasedTriggeringPolicy:
+            interval: 1
+            modulate: true
+      defaultRolloverStrategy:
+        max: 30
+  loggers:
+    logger:
+      name: FILE_LOG
+      level: ${sys:log.level.file}
+      appenderRef:
+        - ref: ROLLING_FILE
+    root:
+      level: ${sys:log.level.console}
+      appenderRef:
+        - ref: STDOUT
+        - ref: ROLLING_FILE

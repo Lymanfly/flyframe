@@ -1,0 +1,46 @@
+# compiled class files
+*.class
+
+#log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+#mobile tools for Java (J2ME)
+.mtj.tmp
+
+#package files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.rar
+*.tar
+*.tar.gz
+
+#virtual machine crash logs
+hs_err_pid*
+
+#maven
+target/
+*.ser
+*.ec
+
+#IntelliJ idea
+.idea/
+out/
+*.ipr
+*.iws
+*.iml
+
+#Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+#Vscode
+.vscode/
+*.factorypath
