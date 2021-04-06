@@ -1,5 +1,6 @@
 package org.lyman.rest.controller;
 
+import org.lyman.response.Messenger;
 import org.lyman.sec.user.entity.User;
 import org.lyman.sec.user.service.UserService;
 import org.lyman.utils.SpringContextUtils;
@@ -53,8 +54,8 @@ public class TestController {
     }
 
     @GetMapping("/get")
-    public List<User> getUsers() {
-        return userService.findUsers();
+    public Messenger<List<User>> getUsers() {
+        return Messenger.success(userService.findUsers());
     }
 
 }
