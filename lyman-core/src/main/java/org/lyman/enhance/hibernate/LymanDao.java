@@ -2,14 +2,17 @@ package org.lyman.enhance.hibernate;
 
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.NonUniqueResultException;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.lyman.exceptions.LymanErrorCode;
 import org.lyman.exceptions.LymanException;
 import org.lyman.utils.ArrayUtils;
 import org.lyman.utils.CollectionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;

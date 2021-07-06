@@ -1,6 +1,5 @@
 package org.lyman.rest.controller;
 
-import org.lyman.response.Messenger;
 import org.lyman.sec.user.entity.User;
 import org.lyman.sec.user.service.UserService;
 import org.lyman.utils.SpringContextUtils;
@@ -15,10 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,11 +47,6 @@ public class TestController {
             }
             userService.saveUsers(users);
         }
-    }
-
-    @GetMapping("/get")
-    public Messenger<List<User>> getUsers() {
-        return Messenger.success(userService.findUsers());
     }
 
 }

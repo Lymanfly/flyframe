@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.hibernate.SessionFactory;
 import org.lyman.enhance.hibernate.LymanDao;
-import org.lyman.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -35,7 +34,7 @@ public class HibernateConfiguration {
     @Autowired
     public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource,
                                                       SessionFactoryProperties properties) {
-        Map<String, Object> map = JsonUtils.toStringKeyMap(properties.getHibernateProperties());
+        Map<String, Object> map = properties.getHibernateProperties();
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
         sessionFactoryBean.setPackagesToScan(properties.getPackagesToScan());
@@ -64,8 +63,8 @@ public class HibernateConfiguration {
     }
 
     @Data
-    public static class SessionFactoryProperties {
-        private String hibernateProperties;
+    private static class SessionFactoryProperties {
+        private Map<String, Object> hibernateProperties;
         private String packagesToScan;
     }
 

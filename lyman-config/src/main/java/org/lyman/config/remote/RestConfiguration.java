@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @PropertySource(value = "classpath:application.yml")
-public class RestConfig {
+public class RestConfiguration {
 
     @Bean
     @Autowired

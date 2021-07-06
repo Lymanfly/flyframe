@@ -38,11 +38,6 @@ configuration:
       defaultRolloverStrategy:
         max: 30
   loggers:
-    logger:
-      name: FILE_LOG
-      level: ${sys:log.level.file}
-      appenderRef:
-        - ref: ROLLING_FILE
     root:
       level: ${sys:log.level.console}
       appenderRef:
