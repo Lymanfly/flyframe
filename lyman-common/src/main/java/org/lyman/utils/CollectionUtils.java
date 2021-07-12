@@ -15,4 +15,8 @@ public class CollectionUtils extends org.springframework.util.CollectionUtils {
         return map != null && map.size() > 0;
     }
 
+    public static boolean isEmpty(@Nullable Map<?, ?> map) {
+        return map == null || map.size() == 0;
+    }
+
 }

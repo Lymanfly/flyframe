@@ -58,7 +58,7 @@ public class Column {
         return new ColumnBuilder();
     }
 
-    private static class ColumnBuilder {
+    public static class ColumnBuilder {
 
         private Column column;
 

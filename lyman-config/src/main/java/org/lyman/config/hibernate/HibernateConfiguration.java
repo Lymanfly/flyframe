@@ -2,9 +2,9 @@ package org.lyman.config.hibernate;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.MapUtils;
 import org.hibernate.SessionFactory;
 import org.lyman.enhance.hibernate.LymanDao;
+import org.lyman.utils.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -38,7 +38,7 @@ public class HibernateConfiguration {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource);
         sessionFactoryBean.setPackagesToScan(properties.getPackagesToScan());
-        if (MapUtils.isNotEmpty(map)) {
+        if (CollectionUtils.isNotEmpty(map)) {
             Properties props = new Properties();
             props.putAll(map);
             sessionFactoryBean.setHibernateProperties(props);

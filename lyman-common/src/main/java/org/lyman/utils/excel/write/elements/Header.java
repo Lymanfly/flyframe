@@ -16,7 +16,7 @@ public class Header {
 
     private String fontName;
 
-    private boolean bold;
+    private boolean bold = true;
 
     private boolean italic;
 
@@ -44,7 +44,7 @@ public class Header {
         return new HeaderBuilder();
     }
 
-    private static class HeaderBuilder {
+    public static class HeaderBuilder {
 
         private Header header;
 
