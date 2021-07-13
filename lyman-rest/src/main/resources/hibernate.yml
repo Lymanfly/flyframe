@@ -1,0 +1,15 @@
+hibernate:
+    hibernate-properties:
+      "[hibernate.dialect]": "org.lyman.enhance.hibernate.PostgresSQLExtendDialect"
+      "[hibernate.show_sql]": false
+      "[hibernate.cache.region.factory_class]": "org.hibernate.cache.ehcache.EhCacheRegionFactory"
+      "[hibernate.format_sql]": false
+      "[hibernate.use_sql_comments]": false
+      "[hibernate.jdbc.fetch_size]": 200
+      "[hibernate.jdbc.batch_size]": 200
+      "[hibernate.jdbc.use_streams_for_binary]": false
+      "[hibernate.cache.use_second_level_cache]": false
+      "[hibernate.cache.use_query_cache]": false
+      "[hibernate.max_fetch_depth]": 3
+      "[hibernate.temp.use_jdbc_metadata_defaults]": false
+    packages-to-scan: org.lyman.*

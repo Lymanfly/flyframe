@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.SessionFactory;
 import org.lyman.enhance.hibernate.LymanDao;
+import org.lyman.enhance.spring.YamlPropertySourceFactory;
 import org.lyman.utils.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -20,14 +21,13 @@ import java.util.Properties;
 
 @Slf4j(topic = "HibernateConfiguration")
 @Configuration
-@PropertySource(value = "classpath:application.yml")
+@PropertySource(value = "classpath:hibernate.yml", factory = YamlPropertySourceFactory.class)
 public class HibernateConfiguration {
 
     @Bean
-    @ConfigurationProperties(prefix = "hibernate.lyman")
+    @ConfigurationProperties(prefix = "hibernate")
     public SessionFactoryProperties sessionFactoryProperties() {
-        SessionFactoryProperties properties = new SessionFactoryProperties();
-        return properties;
+        return new SessionFactoryProperties();
     }
 
     @Bean
