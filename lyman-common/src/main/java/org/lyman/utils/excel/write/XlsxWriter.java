@@ -153,13 +153,14 @@ public class XlsxWriter {
         if (CollectionUtils.isNotEmpty(headers)) {
             for (Header header : headers) {
                 Row row = sheet.createRow(++count);
-                row.setRowStyle(getHeaderStyle(workbook, header));
                 row.setHeightInPoints(header.getHeight());
+                CellStyle cs = getHeaderStyle(workbook, header);
                 String[] titles = header.getTitles();
                 if (ArrayUtils.isNotEmpty(titles)) {
                     for (int i = 0, len = titles.length; i < len; i++) {
                         Cell cell = row.createCell(i);
                         cell.setCellValue(titles[i]);
+                        cell.setCellStyle(cs);
                     }
                 }
             }

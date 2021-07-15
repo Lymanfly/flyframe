@@ -4,17 +4,18 @@ import lombok.Data;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 
 @Data
 public class Header {
 
     private String[] titles;
 
-    private float height = -1;
+    private float height = 12;
 
     private short fontHeight = 12;
 
-    private String fontName;
+    private String fontName = XSSFFont.DEFAULT_FONT_NAME;
 
     private boolean bold = true;
 

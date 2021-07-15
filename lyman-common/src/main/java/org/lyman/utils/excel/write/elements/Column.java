@@ -4,6 +4,7 @@ import lombok.Data;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.lyman.enums.WhiteSpaceType;
 import org.lyman.utils.StringUtils;
 import org.lyman.utils.excel.write.CustomCellStyle;
@@ -30,7 +31,7 @@ public class Column {
 
     private VerticalAlignment verticalAlignment = VerticalAlignment.CENTER;
 
-    private String fontName = "Calibri";
+    private String fontName = XSSFFont.DEFAULT_FONT_NAME;
 
     private short fontHeight = 10;
 
