@@ -9,6 +9,7 @@ import org.lyman.utils.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -19,6 +20,7 @@ import javax.sql.DataSource;
 import java.util.Map;
 import java.util.Properties;
 
+@Conditional(HibernateCondition.class)
 @Slf4j(topic = "HibernateConfiguration")
 @Configuration
 @PropertySource(value = "classpath:hibernate.yml", factory = YamlPropertySourceFactory.class)

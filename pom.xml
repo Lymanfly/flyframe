@@ -15,6 +15,7 @@
         <module>lyman-sec</module>
         <module>lyman-common</module>
         <module>lyman-config</module>
+        <module>lyman-uid</module>
     </modules>
 
     <developers>
@@ -128,6 +129,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${project.spring-boot.version}</version>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${project.spring-boot.version}</version>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
@@ -148,6 +154,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${plugin.maven-compile.version}</version>
                 <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                     <source>${project.compiler.level}</source>
                     <target>${project.compiler.level}</target>
                     <encoding>${project.build.encoding}</encoding>

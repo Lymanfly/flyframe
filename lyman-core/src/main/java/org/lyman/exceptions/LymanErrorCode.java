@@ -19,4 +19,6 @@ public interface LymanErrorCode {
     int SCHEDULER_ERROR = 4000;
     int CACHING_ERROR = 4001;
 
+    int UID_ERROR = 5000;
+
 }

@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.lyman.utils.CollectionUtils;
 import org.lyman.utils.StringUtils;
 import org.springframework.beans.factory.config.YamlMapFactoryBean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.InputStreamResource;
 
 import java.io.InputStream;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 @Slf4j(topic = "ContentType initializer")
 @SuppressWarnings("unchecked")
+@Configuration
 public class ContentType {
 
     private static String defaultType = "application/octet-stream";

@@ -52,7 +52,7 @@ public class Messenger<T> implements Serializable {
         timestamp = new Date();
     }
 
-    public static Messenger<Boolean> result(boolean flag){
+    public static Messenger<String> result(boolean flag){
         if (flag)
             return success();
         return fail();
@@ -80,7 +80,7 @@ public class Messenger<T> implements Serializable {
                 .setTimestamp(new Date());
     }
 
-    public static Messenger<Boolean> success(){
+    public static Messenger<String> success(){
         return success(null);
     }
 
@@ -92,7 +92,7 @@ public class Messenger<T> implements Serializable {
         return result(Status.SUCCESS, message, data);
     }
 
-    public static Messenger<Boolean> fail(Status status){
+    public static Messenger<String> fail(Status status){
         return result(status,null);
     }
 
@@ -113,7 +113,7 @@ public class Messenger<T> implements Serializable {
                 .setMessage(message);
     }
 
-    public static Messenger<Boolean> fail() {
+    public static Messenger<String> fail() {
         return fail(Status.FAIL);
     }
 }

@@ -112,6 +112,8 @@ public class XlsxWriter {
                     Short indetnion = hasIndention && (indentionMapInner = indentionMap.get(key)) != null
                             ? indentionMapInner.get(count) : null;
                     cell.setCellStyle(getBodyStyle(workbook, column, indetnion));
+                    if (count == 0)
+                        sheet.setColumnWidth(j, column.getWidth() * 256);
                 }
                 count++;
             }
@@ -144,7 +146,6 @@ public class XlsxWriter {
         } else
             sheet = workbook.createSheet();
         int count = sheet.getLastRowNum(), frozenLeft = properties.getFrozenLeft(), frozenTop = properties.getFrozenTop();
-        sheet.setDefaultColumnWidth(20);
         sheet.createFreezePane(frozenLeft, frozenTop);
         List<CellRangeAddress> mergedRegions = properties.getMergedRegions();
         if (CollectionUtils.isNotEmpty(mergedRegions))
@@ -158,7 +159,7 @@ public class XlsxWriter {
                 String[] titles = header.getTitles();
                 if (ArrayUtils.isNotEmpty(titles)) {
                     for (int i = 0, len = titles.length; i < len; i++) {
-                        Cell cell = row.createCell(i);
+                        Cell cell = row.createCell(i, CellType.STRING);
                         cell.setCellValue(titles[i]);
                         cell.setCellStyle(cs);
                     }

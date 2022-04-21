@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j(topic = "LymanDao")
 public class LymanDao extends HibernateTemplate {
@@ -78,10 +79,28 @@ public class LymanDao extends HibernateTemplate {
         });
     }
 
+    public long count(@NonNull String hql, @Nullable Object... params) {
+        checkQueryString(hql);
+        return Optional.ofNullable(executeWithNativeSession(s -> {
+            Query<Long> query = s.createQuery("select count(1) " + hql, Long.class);
+            setQueryParameters(query, params);
+            return query.getSingleResult();
+        })).orElse(0L);
+    }
+
     public void saveInBatch(Collection<? extends Serializable> entities) {
         if (CollectionUtils.isNotEmpty(entities)) {
             for (Object obj : entities) save(obj);
         }
+    }
+
+    public void insertOne(@NonNull String hql, @Nullable Object... params) {
+        checkQueryString(hql);
+        executeWithNativeSession(s -> {
+            Query<?> query = s.createQuery(hql);
+            setQueryParameters(query, params);
+            return query.executeUpdate();
+        });
     }
 
     //=====================|--inner--tools--|=========================

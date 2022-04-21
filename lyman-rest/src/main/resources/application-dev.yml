@@ -5,7 +5,17 @@ server:
     session:
       timeout: 1800
 
+lyman:
+  switch:
+    hibernate: true
+    rest: true
+    thread-pool: true
+    validation: true
+    mongodb: false
+
 spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   main:
     log-startup-info: false
   http:
@@ -56,6 +66,9 @@ spring:
       database: lymanmongo
       username: lyman
       password: mongoLy0930
+  redis:
+    host: 127.0.0.1
+    port: 6379
 
 thread-pool:
   scheduler:

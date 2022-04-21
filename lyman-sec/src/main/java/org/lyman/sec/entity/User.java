@@ -1,4 +1,4 @@
-package org.lyman.sec.user.entity;
+package org.lyman.sec.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
@@ -8,8 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "lyman_sec_user")
@@ -24,12 +24,14 @@ public class User implements Serializable {
     @Column(name = "user_id")
     private String id;
 
-    @NotNull(message = "User's name is neccessary")
     @Column(name = "user_name")
     private String name;
 
-    @Column(name = "is_valid")
-    private Boolean isValid;
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "salt")
+    private String salt;
 
     @Column(name = "phone_num")
     private String phoneNum;
@@ -48,5 +50,22 @@ public class User implements Serializable {
 
     @Column(name = "loc_city")
     private String locCity;
+
+    @Column(name = "is_valid")
+    private Boolean isValid;
+
+    @Column(name = "create_time")
+    private Date createTime;
+
+    @Column(name = "create_by")
+    private String createBy;
+
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    @Column(name = "update_by")
+    private String updateBy;
+
+
 
 }

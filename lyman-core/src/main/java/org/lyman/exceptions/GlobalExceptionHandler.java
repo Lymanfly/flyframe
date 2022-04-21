@@ -11,7 +11,7 @@ public class GlobalExceptionHandler implements PriorityOrdered {
 
     @ExceptionHandler(LymanException.class)
     @ResponseStatus(HttpStatus.OK)
-    public Messenger<Boolean> handleCustomizedExceptions() {
+    public Messenger<String> handleCustomizedExceptions() {
         return Messenger.fail(Status.FAIL);
     }
 
